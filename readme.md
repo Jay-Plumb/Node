@@ -1,1 +1,1 @@
-Node work
+Common Node functionality
