@@ -1,1 +1,3 @@
-### Techniques used that aways involve the use of module.exports. 
+### Module.exports 
+
+Techniques used that always involve the use of module.exports.
