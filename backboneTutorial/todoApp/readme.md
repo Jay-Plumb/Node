@@ -1,6 +1,6 @@
-### TODO App using backbone
+# TODO App using backbone
 
-# High level Architecture
+### High level Architecture
 
 * A Todo model to describe individual todo items
 * A TodoList collection to store and persist todos
