@@ -2,11 +2,22 @@ var Todo = Backbone.Model.extend({
 	// initialize called when a new instance of the model is created.
 	initialize: function(){
 		console.log('This model has been initialized');
+		// Listen for changes to the model
+		this.on('change', function(){
+			console.log('- Values for this model have changed');
+		});
+		// We can be more specific to changes in the model
+				this.on('change:title', function(){
+			console.log('- Title value for this model has changed');
+		});
 	},
 	// Give the model set default values
 	defaults: {
 		title: '',
 		completed: false
+	},
+	setTitle: function(newTitle) {
+		this.set({ title: newTitle });
 	}
 });
 
@@ -38,6 +49,7 @@ console.log('Completed: ' + todo3.get('completed'));
 
 // Set single attribute value at a time through Model.set();
 todo3.set('title', "Title attribute set through Model.set()");
+todo3.setTitle('CHANGE TITLE');
 console.log('Todo title: ' + todo3.get('title'));
 console.log('Completed: ' + todo3.get('completed'));
 
@@ -50,3 +62,7 @@ todo3.set({
 // Both attributes set through Model.set()
 console.log('Todo title: ' + todo3.get('title'));
 console.log('Completed: ' + todo3.get('completed'));
+
+
+
+// Validation
