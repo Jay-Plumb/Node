@@ -14,12 +14,18 @@ var Todo = Backbone.Model.extend({
 
 // With no values
 var todo1 = new Todo();
-console.log(JSON.stringify(todo1));
 
+// Getters and setters
+console.log(todo1.get('title'));
+console.log(todo1.get('completed'));
 // Or with some arbitrary data:
 var todo2 = new Todo({
 	title: 'Check the attributes of both model instances in the console',
 	completed: true
 });
 
-console.log(JSON.stringify(todo2));
+console.log(todo2.get('title'));
+console.log(todo2.get('completed'));
+
+
+
