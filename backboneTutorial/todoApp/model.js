@@ -1,6 +1,12 @@
 var Todo = Backbone.Model.extend({
+	// initialize called when a new instance of the model is created.
 	initialize: function(){
 		console.log('This model has been initialized');
+	},
+	// Give the model set default values
+	defaults: {
+		title: '',
+		completed: false
 	}
 });
 
