@@ -1,6 +1,10 @@
 /* Creating models using Backbone.Model */
 var Todo = Backbone.Model.extend({
-	
+
+	// initialize() method is called when new instances of a model is created
+	initialize: function(){
+		console.log('This model has been initialized');
+	}
 }); 
 
 // Create our own concrete instance of a (Todo) model
