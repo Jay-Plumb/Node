@@ -21,3 +21,4 @@ myTodo.set({
 	title: 'Changing more than one attribute at the same time only triggers the listener once',
 	completed: true
 });
+
