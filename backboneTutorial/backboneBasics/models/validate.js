@@ -19,6 +19,6 @@ var Todo = Backbone.Model.extend({
 });
 
 var myTodo = new Todo();
-myTodo.set('completed',true, {validate: true} );
+myTodo.set('completed',true, {validate: true} ); // We have return code within validate so completed did note become true
 console.log('completed ' + myTodo.get('completed'));
 
