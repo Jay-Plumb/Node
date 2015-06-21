@@ -5,7 +5,7 @@ Person.on("change:firstName", function(){
 });
 
 Person.set({firstName: 'Andrew'});
-Person.set({firstName: 'Jeremy'}, {silent:true});
+Person.set({firstName: 'Jeremy'}, {silent:true}); // No log entry
 
 console.log(Person.hasChanged("firstName"));
 
