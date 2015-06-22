@@ -23,7 +23,10 @@ var blog2 = new Blog({
 });
 */
 // Backbone Collection (array of models)
-var Blogs = Backbone.Collection.extend({});
+var Blogs = Backbone.Collection.extend({
+	// GET request made to this address
+	url: 'http://localhost:3000/api/blogs'
+});
 
 // var blogs = new Blogs([blog1, blog2]);
 var blogs = new Blogs();
@@ -97,6 +100,17 @@ var BlogsView = Backbone.View.extend({
 			},30);
 		}, this); // Whenever we edit the model, the view updates
 		this.model.on('remove', this.render, this);
+		// mongd -GET request
+		this.model.fetch({
+			success: function(response){
+				_.each(response.toJSON(), function(item){
+					console.log('Successfully GOT blog with _id: ' + item._id);
+				});
+			},
+			error: function() {
+				console.log('Failed to get blogs!');
+			}
+		});
 	},
 	render: function() {
 		var self = this;
@@ -124,8 +138,19 @@ $(document).ready(function() {
 		$('.url-input').val('');
 
 		// To test its working
-		console.log(blog.toJSON());
+		// console.log(blog.toJSON());
+
 		blogs.add(blog);
+
+		// makes a POST request to server.js
+		blog.save(null, {
+			success: function(response) {
+				console.log('Successfully SAVED blog with _id: ' + response.toJSON()._id);
+			},
+			error: function() {
+				console.log('Failed to save blog! ');
+			}
+		});
 	});
 	
 });
