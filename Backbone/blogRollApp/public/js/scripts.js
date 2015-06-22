@@ -1,3 +1,6 @@
+Backbone.Model.prototype.idAttribute = '_id';
+
+
 // https://www.youtube.com/watch?v=B5P2dId_OtM
 // Backbone Model
 var Blog = Backbone.Model.extend({
@@ -70,6 +73,16 @@ var BlogView = Backbone.View.extend({
 		this.model.set('author', $('.author-update').val());
 		this.model.set('title', $('.title-update').val());
 		this.model.set('url', $('.url-update').val());
+
+		// This sends a put request to our server
+		this.model.save(null, {
+			success: function(response) {
+				console.log('Successfully UPDATED blog with id:' + response.toJSON()._id)
+			},
+			error: function() {
+				console.log('Failed to update blog! ');
+			}
+		});
 	},
 	// Re render and set to defaults
 	cancel: function() {
@@ -77,8 +90,15 @@ var BlogView = Backbone.View.extend({
 	},
 
 	delete: function() {
-		// destroy the model that we are on
-		this.model.destroy();
+		// database for delete/remove
+		this.model.destroy({
+			success: function(response) {
+				console.log('Successfully deleted blog with _id: ' + response.toJSON()._id);
+			},
+			error: function() {
+				console.log('Failed to DELETE blog!');
+			}
+		});
 	},
 	render: function() {
 		this.$el.html(this.template( this.model.toJSON()));
