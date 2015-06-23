@@ -3,14 +3,22 @@
 <head>
 	<meta charset=utf-8>
 	<title>Handlebars</title>
+	<style>
+	h2 span {
+		color:gray;
+		font-size: .8em;
+	}
+	</style>
 </head>
 <body>
 	<ul class="tweets">
 		<script id="template" type="text/x-handlebars-template">
+			{{#each this}}
 			<li>
-					<h2>{{author}}</h2>
-				<p>{{tweet}}</p>
+					<h2>{{author}} {{#if age}} - <span>{{age}}</span>{{/if}}</h2>
+				<p>{{{tweet}}}</p>
 			</li>
+			{{/each}}
 		</script>
 	</ul>
 	<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
@@ -18,10 +26,18 @@
 
 	<script>
 	(function() {
-		var data = {
-			author: 'Jason',
-			tweet: 'Handlebars Test'
-		};
+		var data = [
+			{
+				author: 'Jason',
+				tweet: 'Handlebars Test',
+				age: 27
+			},
+			{
+				author: 'John',
+				tweet: '<strong> Handlebars </strong> Test',
+				age: 45
+			}
+		];
 		var template = Handlebars.compile( $('#template').html() );
 		var temp = template(data);
 		console.log(temp);
