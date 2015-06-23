@@ -9,7 +9,7 @@
         
         <!-- user interface consisting of a form for adding a new book -->
         <div id="books">
-            <form id="addBooks" action="#">
+            <form id="addBook" action="#">
                 <div>
                     <label for="coverImage: ">CoverImage: </label><input id="coverImage" type="file" /> 
                     <label for="title">Title</label><input id="title" type="text" />
@@ -19,22 +19,11 @@
                     <button id="add">Add</button>
                 </div>
             </form>
-
-        <div class="bookContainer">
-            <img src="img/placeholder.jpg " height="100" width="65"/>
-                <ul>
-                <li>Title</li>
-                <li>Author</li>
-                <li>Release Date</li>
-                <li>Keywords</li>
-            </ul>
-            <button class="delete">Delete</button>
-        </div>
-        </div>
+       
 
         <!-- Template for displaying each book-->
         <script id="bookTemplate" type="text/template">
-        <img src="<%= coverImage %>" />
+        <img src="<%= coverImage %>" height="100" width="65"/>
         <ul>
             <li><%= title %></li>
             <li><%= author %></li>
@@ -45,7 +34,7 @@
         <button class="delete">Delete</button>
         </script>
 
-        </script>
+
         <!-- Dependencies -->
         <script src="js/lib/node_modules/jquery/dist/jquery.min.js"></script>
         <script src="js/lib/node_modules/underscore/underscore-min.js"></script>
