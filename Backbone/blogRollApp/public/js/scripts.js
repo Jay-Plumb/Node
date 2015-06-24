@@ -1,9 +1,8 @@
 Backbone.Model.prototype.idAttribute = '_id';
+var app = app || {};
 
-
-// https://www.youtube.com/watch?v=B5P2dId_OtM
 // Backbone Model
-var Blog = Backbone.Model.extend({
+Blog = Backbone.Model.extend({
 	defaults: {
 		author: '',
 		title: '',
