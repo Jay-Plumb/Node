@@ -12,6 +12,8 @@ show dbs
 use blogroll
 show collections
 db.blogs.find().pretty()
+
+remove entry: db.blogs.remove({"_id": ObjectId("558b3a8da1ec368f4b26edac") });
 */
 var express = require('express');
 var mongoose = require('mongoose');
