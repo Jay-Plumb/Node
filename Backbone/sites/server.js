@@ -1,6 +1,15 @@
 /*
 Run in browser:
-http://localhost:4711
+http://localhost:3001
+run mongod
+
+run mongo
+commands within mongo terminal:
+
+show dbs
+use library_database
+show collections
+db.books.find().pretty()
 */
 // Module dependencies
 var application_root = __dirname,
@@ -65,7 +74,7 @@ app.get( '/api/books', function( request, response ) {
     });
 });
 
-/*
+
 // POST - insert a new book
 app.post('/api/books', function(req, res){
 	console.log('Received a POST request');
@@ -77,8 +86,8 @@ app.post('/api/books', function(req, res){
 		res.send(doc);
 	});
 });
-*/
 
+/*
 // insert a new book
 app.post('/api/books', function( request, response ) {
 	var book = new BookModel({
@@ -96,8 +105,7 @@ app.post('/api/books', function( request, response ) {
 		}
 	});
 });
-
-
+*/
 
 //Delete a book
 app.delete( '/api/books/:id', function( request, response ) {
@@ -114,13 +122,16 @@ app.delete( '/api/books/:id', function( request, response ) {
     });
 });
 
-/*
+
+// TODO: Put into tests dir and use module.exports
+
 var book = new BookModel({
 	title: 'Jason',
 	author: 'Jason\'s Blog',
-	releaseDate: 'http://jasonsblog.com'
+	releaseDate: new Date(2008, 4, 1).getTime()
 });
 
 book.save(); // Saves to our database
-*/
+
+
 
