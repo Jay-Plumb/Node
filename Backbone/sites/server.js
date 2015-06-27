@@ -10,6 +10,7 @@ show dbs
 use library_database
 show collections
 db.books.find().pretty()
+db.books.remove({})
 */
 // Module dependencies
 var application_root = __dirname,
@@ -75,20 +76,8 @@ app.get( '/api/books', function( request, response ) {
 });
 
 
-// POST - insert a new book
-app.post('/api/books', function(req, res){
-	console.log('Received a POST request');
-	for (var key in req.body) {
-		console.log(key + ': ' + req.body[key]);
-	}
-	var book = new BookModel(req.body);
-	book.save(function(err, doc){
-		res.send(doc);
-	});
-});
 
-/*
-// insert a new book
+// POST insert a new book
 app.post('/api/books', function( request, response ) {
 	var book = new BookModel({
 		title: request.body.title,
@@ -105,7 +94,7 @@ app.post('/api/books', function( request, response ) {
 		}
 	});
 });
-*/
+
 
 //Delete a book
 app.delete( '/api/books/:id', function( request, response ) {
@@ -124,14 +113,18 @@ app.delete( '/api/books/:id', function( request, response ) {
 
 
 // TODO: Put into tests dir and use module.exports
+var tests = {
+	add: function() {
+		var book = new BookModel({
+			title: 'Jason',
+			author: 'Jason\'s Blog',
+			releaseDate: new Date(2008, 4, 1).getTime()
+		});	
+		book.save(); // Saves to our database
+	}
+};
 
-var book = new BookModel({
-	title: 'Jason',
-	author: 'Jason\'s Blog',
-	releaseDate: new Date(2008, 4, 1).getTime()
-});
-
-book.save(); // Saves to our database
+tests.add();
 
 
 
